@@ -1,7 +1,7 @@
+import { Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { inter } from "@/app/ui/fonts";
 import "./globals.css";
-
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
@@ -20,9 +20,11 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased min-h-screen flex flex-col`}
       >
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <Theme>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </Theme>
       </body>
     </html>
   );
