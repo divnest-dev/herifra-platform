@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header className="sticky top-0 bg-white shadow-md z-10">
@@ -8,6 +10,7 @@ export default function Header() {
         <ul>
           <li>Hjem</li>
           <li>Login / Signup</li>
+          <li>Profile</li>
         </ul>
       </nav>
     </header>
