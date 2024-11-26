@@ -29,6 +29,7 @@ export function RegisterForm() {
       // Add your registration logic here
       console.log("Registration attempt", { email, password });
     } catch (err) {
+      console.error(error);
       setError("Failed to create account");
     } finally {
       setLoading(false);
