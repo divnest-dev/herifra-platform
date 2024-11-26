@@ -1,4 +1,5 @@
 import { RegisterForm } from "@/app/ui/forms/register-form";
+import { RegisterFormSteps } from "@/app/ui/forms/register-multi-step-form";
 import { Container, Heading } from "@radix-ui/themes";
 export default function Register() {
   return (
@@ -11,6 +12,7 @@ export default function Register() {
           Create your account
         </Heading>
         <RegisterForm />
+        <RegisterFormSteps />
       </div>
     </Container>
   );
