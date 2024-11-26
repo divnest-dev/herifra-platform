@@ -87,6 +87,10 @@ export function LoginForm() {
               {loading ? "Signing in..." : "Sign in"}
             </Button>
 
+            <Button size="3" variant="surface">
+              Login with Google
+            </Button>
+
             <Text align="center" size="2" color="gray">
               Don't have an account?{" "}
               <Link
