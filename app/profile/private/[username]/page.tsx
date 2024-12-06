@@ -67,13 +67,17 @@ export default function PrivateProfile({
               <Text size="6" weight="bold" mb="2">
                 Profildetaljer
               </Text>
-              <Text size="4">{profile.name}</Text>
-              <Text size="3" color="gray">
-                {profile.email}
-              </Text>
-              <Text size="3" color="gray">
-                {profile.location}
-              </Text>
+              <Box>
+                <Flex direction="column">
+                  <Text size="4">{profile.name}</Text>
+                  <Text size="3" color="gray">
+                    {profile.email}
+                  </Text>
+                  <Text size="3" color="gray">
+                    {profile.location}
+                  </Text>
+                </Flex>
+              </Box>
             </Box>
           </Flex>
 
