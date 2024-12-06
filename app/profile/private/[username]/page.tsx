@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Box,
-  Card,
-  Container,
-  Flex,
-  Text,
-  Button,
-  Avatar,
-} from "@radix-ui/themes";
-import ProfileHeader from "./components/ProfileHeader";
+import { Box, Card, Flex, Text, Button, Avatar } from "@radix-ui/themes";
 import CustomerForm from "./components/CustomerForm";
 import SettingsPanel from "./components/SettingsPanel";
 import SubscriptionPanel from "./components/SubscriptionPanel";
@@ -30,7 +21,7 @@ export default function PrivateProfile({
   };
   return (
     <>
-      <Container size="3">
+      <div className="w-full">
         <Flex justify="between" align="center" mb="6">
           <Text size="8" weight="bold">
             Din profil
@@ -56,7 +47,7 @@ export default function PrivateProfile({
           </Button>
           <Button
             variant={activeTab === "help" ? "solid" : "soft"}
-            color="gray"
+            color="red"
             onClick={() => setActiveTab("help")}
           >
             Help
@@ -105,7 +96,7 @@ export default function PrivateProfile({
           {activeTab === "settings" && <SettingsPanel />}
           {activeTab === "help" && <HelpPanel />}
         </Box>
-      </Container>
+      </div>
     </>
   );
 }

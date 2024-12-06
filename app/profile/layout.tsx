@@ -6,11 +6,10 @@ export default function ProfileLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Container
-      size="1"
-      className="min-h-[calc(100vh-8rem)] flex items-center justify-center py-12"
-    >
-      <div className="w-full max-w-md">{children}</div>
-    </Container>
+    <div className="min-h-screen w-full flex justify-center">
+      <Container size="4" className="w-full max-w-[1200px] py-12">
+        {children}
+      </Container>
+    </div>
   );
 }
