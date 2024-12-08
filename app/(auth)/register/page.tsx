@@ -5,6 +5,7 @@ import {
   PrivateRegisterForm,
   BusinessRegisterForm,
 } from "@/app/ui/forms/register-form";
+
 export default function Register() {
   return (
     <Box className="max-w-md w-full">

@@ -1,12 +1,4 @@
-import {
-  Box,
-  Card,
-  Select,
-  Text,
-  TextField,
-  Button,
-  Flex,
-} from "@radix-ui/themes";
+import { Card, Select, Text, Button, Flex } from "@radix-ui/themes";
 
 export default function CustomerForm() {
   return (

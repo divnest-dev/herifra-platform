@@ -3,8 +3,6 @@
 import { Box, Card, Flex, Text, Button, Avatar } from "@radix-ui/themes";
 import CustomerForm from "./components/CustomerForm";
 import SettingsPanel from "./components/SettingsPanel";
-import SubscriptionPanel from "./components/SubscriptionPanel";
-import HelpPanel from "./components/HelpPanel";
 import { useState } from "react";
 export default function PrivateProfile({
   params,
@@ -96,9 +94,7 @@ export default function PrivateProfile({
         </Card>
         <Box mt="6">
           {activeTab === "dashboard" && <CustomerForm />}
-          {activeTab === "subscription" && <SubscriptionPanel />}
           {activeTab === "settings" && <SettingsPanel />}
-          {activeTab === "help" && <HelpPanel />}
         </Box>
       </div>
     </>
