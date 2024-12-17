@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { Button, TextField, Text, Flex, Box, Callout } from "@radix-ui/themes";
 
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
-
 import Link from "next/link";
 
 export function LoginForm() {
@@ -27,7 +25,7 @@ export function LoginForm() {
       // Example error handling
       // throw new Error("Invalid credentials");
     } catch (error) {
-      setError("Invalid email or password");
+      setError(`${error}`);
     } finally {
       setLoading(false);
     }
@@ -39,9 +37,6 @@ export function LoginForm() {
         <Flex direction="column" gap="5">
           {error && (
             <Callout.Root color="red">
-              <Callout.Icon>
-                <ExclamationTriangleIcon />
-              </Callout.Icon>
               <Callout.Text>{error}</Callout.Text>
             </Callout.Root>
           )}
@@ -80,7 +75,7 @@ export function LoginForm() {
             </Button>
 
             <Text align="center" size="2" color="gray">
-              Don't have an account?{" "}
+              {"Don't have an account?"}
               <Link
                 href="/register"
                 className="text-blue-500 hover:text-blue-600"

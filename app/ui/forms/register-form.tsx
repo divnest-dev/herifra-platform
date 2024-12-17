@@ -9,8 +9,6 @@ import {
   Callout,
   Select,
 } from "@radix-ui/themes";
-import { EnvelopeClosedIcon, LockClosedIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
 
 interface RegisterFormProps {
   onSubmit: (data: FormData) => Promise<void>;
@@ -29,7 +27,7 @@ const BaseRegisterForm = ({
     try {
       await onSubmit(new FormData(e.currentTarget));
     } catch (err) {
-      setError("Registration failed");
+      setError(`${err}`);
     } finally {
       setLoading(false);
     }
@@ -45,9 +43,7 @@ const BaseRegisterForm = ({
 
       <Flex direction="column" gap="4">
         <TextField.Root name="email" type="email" placeholder="Email" required>
-          <TextField.Slot>
-            <EnvelopeClosedIcon />
-          </TextField.Slot>
+          <TextField.Slot></TextField.Slot>
         </TextField.Root>
 
         <TextField.Root
@@ -56,9 +52,7 @@ const BaseRegisterForm = ({
           placeholder="Password"
           required
         >
-          <TextField.Slot>
-            <LockClosedIcon />
-          </TextField.Slot>
+          <TextField.Slot></TextField.Slot>
         </TextField.Root>
 
         {children}
@@ -80,6 +74,7 @@ export function PrivateRegisterForm() {
     <BaseRegisterForm
       onSubmit={async (data) => {
         // Handle private registration
+        console.log(data);
       }}
     >
       <TextField.Root
@@ -96,6 +91,7 @@ export function BusinessRegisterForm() {
     <BaseRegisterForm
       onSubmit={async (data) => {
         // Handle business registration
+        console.log(data);
       }}
     >
       <TextField.Root
