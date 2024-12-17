@@ -1,21 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Button,
-  TextField,
-  Text,
-  Flex,
-  Tabs,
-  Box,
-  Callout,
-} from "@radix-ui/themes";
+import { Button, TextField, Text, Flex, Box, Callout } from "@radix-ui/themes";
 
-import {
-  EnvelopeClosedIcon,
-  LockClosedIcon,
-  ExclamationTriangleIcon,
-} from "@radix-ui/react-icons";
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
 import Link from "next/link";
 
