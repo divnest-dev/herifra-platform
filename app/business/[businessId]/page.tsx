@@ -25,11 +25,7 @@ const businessData = {
   images: ["/placeholder.jpg", "/placeholder.jpg", "/placeholder.jpg"],
 };
 
-export default function BusinessProfile({
-  params,
-}: {
-  params: { businessId: string };
-}) {
+export default function BusinessProfile() {
   const [activeTab, setActiveTab] = useState("info");
 
   return (
