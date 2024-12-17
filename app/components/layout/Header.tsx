@@ -23,7 +23,7 @@ export default function Header({ initialAuthState }: HeaderProps) {
     const checkAuth = async () => {
       try {
         // Replace with your actual auth check
-        const token = localStorage.getItem("accessToken");
+        // const token = localStorage.getItem("accessToken");
         setIsLoggedIn(false);
       } catch (error) {
         console.error("Auth check failed:", error);
