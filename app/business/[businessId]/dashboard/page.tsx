@@ -56,7 +56,7 @@ export default function BusinessDashboard({
     <Box className="w-full">
       <Flex justify="between" align="center" mb="6">
         <Text size="8" weight="bold">
-          Bedriftsoversikt
+          Bedriftsoversikt - `${params.businessId}`
         </Text>
         <Flex gap="3">
           <Button variant="solid" color="grass" onClick={handleCustomerForm}>

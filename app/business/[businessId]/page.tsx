@@ -1,14 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
+import Image from "next/image";
 import { Box, Card, Flex, Text, Button, Avatar, Grid } from "@radix-ui/themes";
-import {
-  CalendarIcon,
-  EnvelopeClosedIcon,
-  MobileIcon,
-  SewingPinFilledIcon,
-} from "@radix-ui/react-icons";
 
 // Mock data - replace with Supabase data later
 const businessData = {
@@ -102,15 +96,12 @@ export default function BusinessProfile({
                   Kontaktinformasjon
                 </Text>
                 <Flex align="center" gap="2" mb="1">
-                  <MobileIcon />
                   <Text size="2">{businessData.phone}</Text>
                 </Flex>
                 <Flex align="center" gap="2" mb="1">
-                  <EnvelopeClosedIcon />
                   <Text size="2">{businessData.email}</Text>
                 </Flex>
                 <Flex align="center" gap="2">
-                  <SewingPinFilledIcon />
                   <Text size="2">{businessData.location}</Text>
                 </Flex>
               </Box>
@@ -140,7 +131,7 @@ export default function BusinessProfile({
           <Card size="3">
             <Grid columns="3" gap="3">
               {businessData.images.map((image, index) => (
-                <img
+                <Image
                   key={index}
                   src={image}
                   alt={`${businessData.name} - Bilde ${index + 1}`}
@@ -159,10 +150,7 @@ export default function BusinessProfile({
             Bestill time
           </Text>
           <Flex direction="column" gap="2">
-            <Button size="3">
-              <CalendarIcon width="16" height="16" />
-              Book now
-            </Button>
+            <Button size="3">Book now</Button>
             <Text size="2" color="gray" align="center">
               eller ring {businessData.phone}
             </Text>
