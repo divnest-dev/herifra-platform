@@ -10,12 +10,12 @@ export default function Register() {
     <Box className="max-w-md w-full">
       <Box mb="6">
         <Text weight="bold" size="8" align="center">
-          Create Account
+          Lag en profil
         </Text>
       </Box>
       <Tabs.Root defaultValue="private">
         <Tabs.List>
-          <Tabs.Trigger value="private">Private User</Tabs.Trigger>
+          <Tabs.Trigger value="private">Vanlig</Tabs.Trigger>
           <Tabs.Trigger value="business">Business</Tabs.Trigger>
         </Tabs.List>
         <Box pt="6">

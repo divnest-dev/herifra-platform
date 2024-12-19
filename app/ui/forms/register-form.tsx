@@ -42,27 +42,28 @@ const BaseRegisterForm = ({
       )}
 
       <Flex direction="column" gap="4">
-        <TextField.Root name="email" type="email" placeholder="Email" required>
-          <TextField.Slot></TextField.Slot>
-        </TextField.Root>
+        <TextField.Root
+          name="email"
+          type="email"
+          placeholder="Din epost"
+          required
+        ></TextField.Root>
 
         <TextField.Root
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder="Passord"
           required
-        >
-          <TextField.Slot></TextField.Slot>
-        </TextField.Root>
+        ></TextField.Root>
 
         {children}
 
         <Text size="2" color="gray">
-          Additional details can be filled in later from your profile settings
+          Flere detaljer kan fylles ut senere på din profil.
         </Text>
 
         <Button type="submit" disabled={loading}>
-          {loading ? "Creating account..." : "Create account"}
+          {loading ? "Oppretter konto..." : "Opprett konto"}
         </Button>
       </Flex>
     </form>
@@ -79,7 +80,7 @@ export function PrivateRegisterForm() {
     >
       <TextField.Root
         name="username"
-        placeholder="Username"
+        placeholder="Brukernavn"
         required
       ></TextField.Root>
     </BaseRegisterForm>
@@ -96,23 +97,19 @@ export function BusinessRegisterForm() {
     >
       <TextField.Root
         name="businessName"
-        placeholder="Business Name"
+        placeholder="Foretaksnavn"
         required
       ></TextField.Root>
-      <TextField.Root
-        name="orgNumber"
-        placeholder="Organization Number"
-        required
-      >
+      <TextField.Root name="orgNumber" placeholder="Org.nummer" required>
         <TextField.Slot />
       </TextField.Root>
       <Select.Root name="businessType" required>
-        <Select.Trigger placeholder="Business Type" />
+        <Select.Trigger placeholder="Velg type virksomhet" />
         <Select.Content>
-          <Select.Item value="food">Restaurant/Food</Select.Item>
-          <Select.Item value="accommodation">Accommodation</Select.Item>
-          <Select.Item value="activity">Activities</Select.Item>
-          <Select.Item value="other">Other</Select.Item>
+          <Select.Item value="food">Restaurant/Mat</Select.Item>
+          <Select.Item value="accommodation">Overnatting</Select.Item>
+          <Select.Item value="activity">Aktiviteter</Select.Item>
+          <Select.Item value="other">Annet</Select.Item>
         </Select.Content>
       </Select.Root>
     </BaseRegisterForm>

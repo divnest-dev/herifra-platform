@@ -43,10 +43,10 @@ export function LoginForm() {
 
           <Flex direction="column" gap="2">
             <Text as="label" size="2" weight="bold">
-              Email
+              E-post
             </Text>
             <TextField.Root
-              placeholder="Enter your email"
+              placeholder="Din e-post"
               name="email"
               type="email"
               required
@@ -55,10 +55,10 @@ export function LoginForm() {
 
           <Flex direction="column" gap="2">
             <Text as="label" size="2" weight="bold">
-              Password
+              Passord
             </Text>
             <TextField.Root
-              placeholder="Enter your password"
+              placeholder="Ditt passord"
               name="password"
               type="password"
               required
@@ -67,20 +67,20 @@ export function LoginForm() {
 
           <Flex direction="column" gap="3">
             <Button type="submit" disabled={loading} size="3">
-              {loading ? "Signing in..." : "Sign in"}
+              {loading ? "Logger på..." : "Logg på"}
             </Button>
 
             <Button size="3" variant="surface">
-              Login with Google
+              Logg inn med Google
             </Button>
 
             <Text align="center" size="2" color="gray">
-              {"Don't have an account?"}
+              {"Har du ikke konto?"}
               <Link
                 href="/register"
                 className="text-blue-500 hover:text-blue-600"
               >
-                Sign up
+                Registrer deg her
               </Link>
             </Text>
           </Flex>

@@ -18,9 +18,9 @@ export function BusinessProfile({
   const [activeTab, setActiveTab] = useState("info");
 
   return (
-    <Grid columns="5" gap="6">
-      {/* Main Content - 3 columns */}
-      <Box className="col-span-3">
+    <Grid columns="2" gap="6">
+      {/* Main Content */}
+      <Box className="col-span-1">
         <Card size="3" mb="4">
           <Flex gap="4" align="center">
             <Avatar
@@ -29,12 +29,14 @@ export function BusinessProfile({
               fallback={data.name?.[0] || "B"}
             />
             <Box>
-              <Text size="7" weight="bold" mb="1">
-                {data.name}
-              </Text>
-              <Text size="3" color="gray">
-                Drevet av {data.owner}
-              </Text>
+              <Flex direction="column">
+                <Text size="7" weight="bold" mb="1">
+                  {data.name}
+                </Text>
+                <Text size="3" color="gray">
+                  Drevet av {data.owner}
+                </Text>
+              </Flex>
             </Box>
           </Flex>
         </Card>
@@ -58,30 +60,31 @@ export function BusinessProfile({
           >
             Galleri
           </Button>
+          {isOwner && (
+            <Button
+              variant="soft"
+              onClick={() => (window.location.href = `${data.id}/dashboard`)}
+            >
+              Rediger profil
+            </Button>
+          )}
         </Flex>
 
-        {isOwner && (
-          <Button
-            variant="soft"
-            onClick={() => (window.location.href = `${data.id}/dashboard`)}
-          >
-            Rediger profil
-          </Button>
-        )}
-
         {activeTab === "info" && (
-          <Card size="3">
-            <Text size="5" mb="4">
+          <Card size="4">
+            <Text size="5" mb="9">
               {data.description}
             </Text>
             <Grid columns="2" gap="4">
               <Box>
-                <Text weight="bold" mb="2">
-                  Åpningstider
-                </Text>
-                <Text size="2">Man-Fre: {data.openingHours.mon_fri}</Text>
-                <Text size="2">Lørdag: {data.openingHours.sat}</Text>
-                <Text size="2">Søndag: {data.openingHours.sun}</Text>
+                <Flex direction="column">
+                  <Text weight="bold" mb="2">
+                    Åpningstider
+                  </Text>
+                  <Text size="2">Man-Fre: {data.openingHours.mon_fri}</Text>
+                  <Text size="2">Lørdag: {data.openingHours.sat}</Text>
+                  <Text size="2">Søndag: {data.openingHours.sun}</Text>
+                </Flex>
               </Box>
               <Box>
                 <Text weight="bold" mb="2">
@@ -135,21 +138,6 @@ export function BusinessProfile({
             </Grid>
           </Card>
         )}
-      </Box>
-
-      {/* Sidebar - 2 columns */}
-      <Box className="col-span-2">
-        <Card size="3">
-          <Text size="5" weight="bold" mb="4">
-            Bestill time
-          </Text>
-          <Flex direction="column" gap="2">
-            <Button size="3">Book now</Button>
-            <Text size="2" color="gray" align="center">
-              eller ring {data.phone}
-            </Text>
-          </Flex>
-        </Card>
       </Box>
     </Grid>
   );

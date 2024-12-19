@@ -1,6 +1,6 @@
 export const loggedOutLinks = [
-  { name: "Login", href: "/login" },
-  { name: "Register", href: "/register" },
+  { name: "Logg inn", href: "/login" },
+  { name: "Registrer", href: "/register" },
 ];
 
 export const loggedInLinks = [

@@ -1,5 +1,3 @@
-// app/business/[businessId]/dashboard/page.tsx
-
 import { DashboardContent } from "../components/DashboardContent";
 
 interface PageProps {

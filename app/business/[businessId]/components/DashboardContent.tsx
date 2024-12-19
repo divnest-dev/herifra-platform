@@ -1,10 +1,17 @@
-// app/business/[businessId]/components/DashboardContent.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Card, Flex, Text, Button, Avatar, Grid } from "@radix-ui/themes";
 import { BusinessDetailsForm } from "./BusinessDetailsForm";
 import { useRouter } from "next/navigation";
+import { getMockBusinessData } from "../utils/mockData";
+import {
+  initializeMockData,
+  getMockData,
+  updateMockData,
+} from "../utils/mockDataManager";
+
+import type { BusinessData } from "../utils/mockData";
 
 interface DashboardContentProps {
   businessId: string;
@@ -13,28 +20,38 @@ interface DashboardContentProps {
 export function DashboardContent({ businessId }: DashboardContentProps) {
   const router = useRouter();
   const [showSettings, setShowSettings] = useState(false);
+  const [businessData, setBusinessData] = useState<BusinessData | null>(null);
 
-  const business = {
-    name: "Norris Gård",
-    owner: "Chuck Norris",
-    email: "business@mail.com",
-    location: "6150 Ørsta",
-    services: ["Frukt", "Overnatting"],
-    image: "/placeholder.jpg",
-    statistics: {
-      monthlyVisits: 245,
-      activeCustomers: 12,
-      totalBookings: 38,
-    },
+  useEffect(() => {
+    // Initialize mock data if it doesn't exist
+    const initialData = getMockBusinessData(businessId);
+    const data = initializeMockData(businessId, initialData);
+    setBusinessData(data);
+  }, [businessId]);
+
+  const handleEditProfile = () => {
+    setShowSettings(true);
   };
 
-  const handleCustomerForm = () => {
-    setShowSettings(true);
+  const handleViewPublicProfile = () => {
+    router.push(`/business/${businessId}`);
+  };
+
+  const handleUpdateBusinessData = (updatedData: Partial<BusinessData>) => {
+    if (businessData) {
+      const updated = updateMockData(businessId, updatedData);
+      setBusinessData(updated);
+      setShowSettings(false);
+    }
   };
 
   const handleLogout = () => {
     router.push("/login");
   };
+
+  if (!businessData) {
+    return <div>Loading...</div>;
+  }
 
   if (showSettings) {
     return (
@@ -47,7 +64,10 @@ export function DashboardContent({ businessId }: DashboardContentProps) {
             Tilbake til dashboard
           </Button>
         </Flex>
-        <BusinessDetailsForm />
+        <BusinessDetailsForm
+          initialData={businessData}
+          onSubmit={handleUpdateBusinessData}
+        />
       </Box>
     );
   }
@@ -56,13 +76,16 @@ export function DashboardContent({ businessId }: DashboardContentProps) {
     <Box className="w-full">
       <Flex justify="between" align="center" mb="6">
         <Text size="8" weight="bold">
-          Bedriftsoversikt - {businessId}
+          Bedriftsoversikt
         </Text>
         <Flex gap="3">
-          <Button variant="solid" color="grass" onClick={handleCustomerForm}>
-            Legg inn kundeforhold
+          <Button variant="solid" color="grass" onClick={handleEditProfile}>
+            Endre detaljer
           </Button>
-          <Button variant="solid" color="gray" onClick={handleLogout}>
+          <Button variant="soft" color="blue" onClick={handleViewPublicProfile}>
+            Se offentlig profil
+          </Button>
+          <Button variant="soft" color="gray" onClick={handleLogout}>
             Logg ut
           </Button>
         </Flex>
@@ -75,7 +98,7 @@ export function DashboardContent({ businessId }: DashboardContentProps) {
               Månedlige besøk
             </Text>
             <Text size="6" weight="bold">
-              {business.statistics.monthlyVisits}
+              {businessData.statistics.monthlyVisits}
             </Text>
           </Flex>
         </Card>
@@ -85,7 +108,7 @@ export function DashboardContent({ businessId }: DashboardContentProps) {
               Aktive kunder
             </Text>
             <Text size="6" weight="bold">
-              {business.statistics.activeCustomers}
+              {businessData.statistics.activeCustomers}
             </Text>
           </Flex>
         </Card>
@@ -95,7 +118,7 @@ export function DashboardContent({ businessId }: DashboardContentProps) {
               Totale bestillinger
             </Text>
             <Text size="6" weight="bold">
-              {business.statistics.totalBookings}
+              {businessData.statistics.totalBookings}
             </Text>
           </Flex>
         </Card>
@@ -103,18 +126,22 @@ export function DashboardContent({ businessId }: DashboardContentProps) {
 
       <Card size="3">
         <Flex gap="4">
-          <Avatar size="6" src={business.image} fallback={business.name[0]} />
+          <Avatar
+            size="6"
+            src={businessData.images[0]}
+            fallback={businessData.name[0]}
+          />
           <Box>
             <Text size="6" weight="bold" mb="2">
               Bedriftsdetaljer
             </Text>
             <Flex direction="column">
-              <Text size="4">{business.name}</Text>
+              <Text size="4">{businessData.name}</Text>
               <Text size="3" color="gray">
-                {business.email}
+                {businessData.email}
               </Text>
               <Text size="3" color="gray">
-                {business.location}
+                {businessData.location}
               </Text>
             </Flex>
           </Box>
@@ -125,9 +152,9 @@ export function DashboardContent({ businessId }: DashboardContentProps) {
             Registrerte tjenester
           </Text>
           <Flex gap="4">
-            {business.services.map((service) => (
-              <Text key={service}>
-                {service === "Frukt" ? "🍎" : "🏠"} {service}
+            {businessData.services.map((service) => (
+              <Text key={service.name}>
+                {service.icon} {service.name}
               </Text>
             ))}
           </Flex>
