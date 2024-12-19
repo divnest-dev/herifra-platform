@@ -1,12 +1,9 @@
 import { DashboardContent } from "../components/DashboardContent";
 
-interface PageParams {
-  params: {
-    businessId: string;
-  };
-}
+export type paramsType = Promise<{ businessId: string }>;
 
-export default function DashboardPage({ params }: PageParams) {
-  const businessId = params.businessId;
+export default async function DashboardPage(props: { params: paramsType }) {
+  const { businessId } = await props.params;
+
   return <DashboardContent businessId={businessId} />;
 }
