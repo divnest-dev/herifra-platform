@@ -1,5 +1,4 @@
 import { Text, Box, Tabs } from "@radix-ui/themes";
-// import { RegisterFormSteps } from "@/app/ui/forms/register-multi-step-form";
 // import { BaseRegisterForm } from "@/app/ui/forms/register-form";
 import {
   PrivateRegisterForm,

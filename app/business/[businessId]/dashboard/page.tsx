@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import { Box, Card, Flex, Text, Button, Avatar, Grid } from "@radix-ui/themes";
-import { RegisterFormSteps } from "@/app/ui/forms/register-multi-step-form";
+import { BusinessDetailsForm } from "@/app/business/[businessId]/components/BusinessDetailsForm";
 import { useRouter } from "next/navigation";
 
+interface BusinessDashboardProps {
+  businessId: string;
+}
+
 export default function BusinessDashboard({
-  params,
-}: {
-  params: { businessId: string };
-}) {
+  businessId,
+}: BusinessDashboardProps) {
   const router = useRouter();
   const [showSettings, setShowSettings] = useState(false);
 
@@ -47,7 +49,7 @@ export default function BusinessDashboard({
             Tilbake til dashboard
           </Button>
         </Flex>
-        <RegisterFormSteps />
+        <BusinessDetailsForm />
       </Box>
     );
   }
@@ -56,7 +58,7 @@ export default function BusinessDashboard({
     <Box className="w-full">
       <Flex justify="between" align="center" mb="6">
         <Text size="8" weight="bold">
-          Bedriftsoversikt - `${params.businessId}`
+          Bedriftsoversikt - {businessId}
         </Text>
         <Flex gap="3">
           <Button variant="solid" color="grass" onClick={handleCustomerForm}>
@@ -70,28 +72,34 @@ export default function BusinessDashboard({
 
       <Grid columns="3" gap="4" mb="6">
         <Card>
-          <Text size="2" color="gray">
-            Månedlige besøk
-          </Text>
-          <Text size="6" weight="bold">
-            {business.statistics.monthlyVisits}
-          </Text>
+          <Flex direction="column" gap="2">
+            <Text size="2" color="gray">
+              Månedlige besøk
+            </Text>
+            <Text size="6" weight="bold">
+              {business.statistics.monthlyVisits}
+            </Text>
+          </Flex>
         </Card>
         <Card>
-          <Text size="2" color="gray">
-            Aktive kunder
-          </Text>
-          <Text size="6" weight="bold">
-            {business.statistics.activeCustomers}
-          </Text>
+          <Flex direction="column" gap="2">
+            <Text size="2" color="gray">
+              Aktive kunder
+            </Text>
+            <Text size="6" weight="bold">
+              {business.statistics.activeCustomers}
+            </Text>
+          </Flex>
         </Card>
         <Card>
-          <Text size="2" color="gray">
-            Totale bestillinger
-          </Text>
-          <Text size="6" weight="bold">
-            {business.statistics.totalBookings}
-          </Text>
+          <Flex direction="column" gap="2">
+            <Text size="2" color="gray">
+              Totale bestillinger
+            </Text>
+            <Text size="6" weight="bold">
+              {business.statistics.totalBookings}
+            </Text>
+          </Flex>
         </Card>
       </Grid>
 

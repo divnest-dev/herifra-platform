@@ -2,7 +2,7 @@
 
 // import { useState } from "react";
 import { Box } from "@radix-ui/themes";
-import { RegisterFormSteps } from "@/app/ui/forms/register-multi-step-form";
+import { BusinessDetailsForm } from "@/app/business/[businessId]/components/BusinessDetailsForm";
 // import { useRouter } from "next/navigation";
 
 export default function BusinessSettings() {
@@ -37,10 +37,10 @@ export default function BusinessSettings() {
   };
 
     */
-  // onSubmit={handleSubmit} on RegisterFormSteps
+  // onSubmit={handleSubmit} on BusinessDetailsForm
   return (
     <Box className="max-w-3xl mx-auto">
-      <RegisterFormSteps />
+      <BusinessDetailsForm />
     </Box>
   );
 }

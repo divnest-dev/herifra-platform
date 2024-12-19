@@ -18,7 +18,7 @@ interface ManualPrice {
   price: string;
 }
 
-export function RegisterFormSteps() {
+export function BusinessDetailsForm() {
   const [selectedService, setSelectedService] = useState("");
   const [otherService, setOtherService] = useState("");
   const [pdfFile, setPdfFile] = useState<File | null>(null);
