@@ -1,6 +1,6 @@
 import { BusinessData } from "./mockData";
 
-let mockDataStore: { [key: string]: BusinessData } = {};
+const mockDataStore: { [key: string]: BusinessData } = {};
 
 export const initializeMockData = (id: string, initialData: BusinessData) => {
   if (!mockDataStore[id]) {

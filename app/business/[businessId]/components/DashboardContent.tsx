@@ -5,11 +5,7 @@ import { Box, Card, Flex, Text, Button, Avatar, Grid } from "@radix-ui/themes";
 import { BusinessDetailsForm } from "./BusinessDetailsForm";
 import { useRouter } from "next/navigation";
 import { getMockBusinessData } from "../utils/mockData";
-import {
-  initializeMockData,
-  getMockData,
-  updateMockData,
-} from "../utils/mockDataManager";
+import { initializeMockData, updateMockData } from "../utils/mockDataManager";
 
 import type { BusinessData } from "../utils/mockData";
 
