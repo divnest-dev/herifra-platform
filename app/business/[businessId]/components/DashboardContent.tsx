@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Box, Card, Flex, Text, Button, Avatar, Grid } from "@radix-ui/themes";
 import { BusinessDetailsForm } from "./BusinessDetailsForm";
 import { useRouter } from "next/navigation";
 import { getMockBusinessData } from "../utils/mockData";
 import { initializeMockData, updateMockData } from "../utils/mockDataManager";
-
 import type { BusinessData } from "../utils/mockData";
 
 interface DashboardContentProps {
@@ -16,38 +15,33 @@ interface DashboardContentProps {
 export function DashboardContent({ businessId }: DashboardContentProps) {
   const router = useRouter();
   const [showSettings, setShowSettings] = useState(false);
-  const [businessData, setBusinessData] = useState<BusinessData | null>(null);
-
-  useEffect(() => {
-    // Initialize mock data if it doesn't exist
+  const [businessData, setBusinessData] = useState<BusinessData>(() => {
+    // Initialize with mock data immediately to avoid null state
     const initialData = getMockBusinessData(businessId);
-    const data = initializeMockData(businessId, initialData);
-    setBusinessData(data);
-  }, [businessId]);
+    return initializeMockData(businessId, initialData);
+  });
 
   const handleEditProfile = () => {
     setShowSettings(true);
   };
 
   const handleViewPublicProfile = () => {
+    // Route to the public profile page
     router.push(`/business/${businessId}`);
   };
 
   const handleUpdateBusinessData = (updatedData: Partial<BusinessData>) => {
-    if (businessData) {
-      const updated = updateMockData(businessId, updatedData);
-      setBusinessData(updated);
-      setShowSettings(false);
-    }
+    const updated = updateMockData(businessId, {
+      ...businessData,
+      ...updatedData,
+    });
+    setBusinessData(updated);
+    setShowSettings(false);
   };
 
   const handleLogout = () => {
     router.push("/login");
   };
-
-  if (!businessData) {
-    return <div>Loading...</div>;
-  }
 
   if (showSettings) {
     return (
