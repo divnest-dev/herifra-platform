@@ -1,7 +1,12 @@
 import { DashboardContent } from "../components/DashboardContent";
 
-export default function DashboardPage({ params }: any) {
-  const businessId = params.businessId;
+interface PageParams {
+  params: {
+    businessId: string;
+  };
+}
 
+export default function DashboardPage({ params }: PageParams) {
+  const businessId = params.businessId;
   return <DashboardContent businessId={businessId} />;
 }
